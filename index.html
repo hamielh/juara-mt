@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Juara · MT — portaljuara.com.br · juaramt.com.br</title>
+<meta name="description" content="Domínios sobre Juara/MT. Para parcerias ou interesse, fale com a AGPixel." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..600,30..100&family=Inter:wght@300..600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#fbf7ee;          /* creme bem clarinho */
+    --bg-2:#f4ecd9;
+    --ink:#1d2a1f;          /* verde-quase-preto, mais leve que preto */
+    --ink-soft:#5a6a55;
+    --paper:#ffffff;
+    --sun:#f8b94c;          /* dourado vivo */
+    --sky:#7bbfd6;          /* azul céu */
+    --leaf:#5fa463;         /* verde folha */
+    --coral:#ee7b5a;        /* coral/sunset suave */
+    --pink:#f3c6c1;
+    --rule:rgba(29,42,31,.14);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Inter',ui-sans-serif,system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    height:100vh;
+    overflow:hidden;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 90% -10%, rgba(248,185,76,.35), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 0% 110%, rgba(123,191,214,.30), transparent 60%);
+  }
+
+  .shell{
+    width:100%;
+    margin:0;
+    padding:14px 28px 16px;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  @media (max-width:760px){ .shell{ padding:12px 14px 14px; gap:10px } }
+
+  /* ==== TOP BAR ==== */
+  .top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .top .live{ display:flex; align-items:center; gap:8px; }
+  .top .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--leaf);
+    box-shadow:0 0 0 4px rgba(95,164,99,.18);
+    display:inline-block;
+    animation:pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ box-shadow:0 0 0 4px rgba(95,164,99,.18) }
+    50%   { box-shadow:0 0 0 9px rgba(95,164,99,.04) }
+  }
+  @media (max-width:640px){ .top .coords{ display:none } }
+
+  /* ==== HERO ==== */
+  .hero{
+    display:grid;
+    grid-template-columns: 1.15fr .95fr;
+    gap:14px;
+    flex:1;
+    min-height:0;
+  }
+  @media (max-width:980px){ .hero{ grid-template-columns:1fr; } }
+
+  /* ==== LEFT card ==== */
+  .left{
+    background:var(--paper);
+    border-radius:20px;
+    padding:28px 36px 24px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    border:1px solid rgba(29,42,31,.06);
+    min-height:0;
+  }
+
+  /* sun in corner */
+  .sun-deco{
+    position:absolute;
+    top:-70px; right:-70px;
+    width:200px; height:200px;
+    border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, #ffd17a, var(--sun) 60%, #e89a3a);
+    box-shadow: 0 16px 48px rgba(248,185,76,.4);
+    z-index:0;
+    aspect-ratio:1/1;
+  }
+  .sun-deco::after{
+    /* rays */
+    content:"";
+    position:absolute; inset:-24px;
+    border-radius:50%;
+    background:
+      conic-gradient(from 0deg,
+        rgba(248,185,76,.0) 0 8deg,
+        rgba(248,185,76,.25) 8deg 12deg,
+        rgba(248,185,76,.0) 12deg 30deg,
+        rgba(248,185,76,.25) 30deg 34deg,
+        rgba(248,185,76,.0) 34deg 60deg,
+        rgba(248,185,76,.25) 60deg 64deg,
+        rgba(248,185,76,.0) 64deg 90deg,
+        rgba(248,185,76,.25) 90deg 94deg,
+        rgba(248,185,76,.0) 94deg 360deg
+      );
+    animation:spin 60s linear infinite;
+    opacity:.6;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg) } }
+
+  /* leafy decorations bottom-left */
+  .leaf-deco{
+    position:absolute;
+    bottom:-30px; left:-20px;
+    width:200px; height:200px;
+    opacity:.85;
+    z-index:0;
+    pointer-events:none;
+  }
+
+  .left > *{ position:relative; z-index:1 }
+
+  .eyebrow{
+    font-size:11px;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow .line{ flex:0 0 28px; height:1px; background:rgba(29,42,31,.3) }
+
+  h1.display{
+    font-family:'Fraunces',serif;
+    font-weight:300;
+    font-variation-settings:"opsz" 144, "SOFT" 80;
+    font-size: clamp(40px, 5.2vw, 78px);
+    line-height:.96;
+    letter-spacing:-.025em;
+    margin:10px 0 0;
+    color:var(--ink);
+  }
+  h1.display em{
+    font-style:italic;
+    font-weight:300;
+    color:var(--coral);
+    position:relative;
+  }
+  h1.display em::after{
+    content:"";
+    position:absolute;
+    left:-2%; right:-2%; bottom:.05em;
+    height:.18em;
+    background:var(--sun);
+    z-index:-1;
+    border-radius:6px;
+    opacity:.55;
+  }
+  h1.display .city{
+    display:block;
+    font-size: .32em;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    font-weight:500;
+    margin-top:10px;
+    font-family:'Inter',sans-serif;
+  }
+
+  .lede{
+    font-family:'Fraunces',serif;
+    font-size:17px;
+    line-height:1.4;
+    max-width:42ch;
+    color:var(--ink);
+    margin:14px 0 0;
+    font-weight:300;
+  }
+  .lede strong{ font-weight:500 }
+
+  /* domain pills */
+  .domains{
+    margin-top:18px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .domain-row{
+    display:flex; align-items:center; gap:14px;
+    padding:10px 16px;
+    background:var(--bg);
+    border:1px solid var(--rule);
+    border-radius:12px;
+    font-family:'Fraunces',serif;
+    font-size:clamp(15px,1.6vw,19px);
+    font-weight:400;
+    letter-spacing:-.01em;
+    transition:transform .25s ease, border-color .25s ease, background .25s ease;
+  }
+  .domain-row:hover{
+    transform:translateY(-2px);
+    border-color:var(--coral);
+    background:#fff;
+  }
+  .domain-row .num{
+    font-family:'Inter',sans-serif;
+    font-size:11px;
+    letter-spacing:.18em;
+    color:var(--ink-soft);
+    min-width:24px;
+  }
+  .domain-row .url{ flex:1; color:var(--ink); }
+  .domain-row .tag{
+    font-family:'Inter',sans-serif;
+    font-size:10px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--leaf);
+    padding:5px 11px;
+    background:rgba(95,164,99,.12);
+    border-radius:999px;
+    white-space:nowrap;
+  }
+
+  /* ==== RIGHT column ==== */
+  .right{
+    display:grid;
+    grid-template-rows: 1.35fr .9fr;
+    gap:14px;
+    min-height:0;
+  }
+  @media (max-width:980px){ .right{ grid-template-rows: 280px auto; } }
+
+  /* photo card */
+  .photo{
+    position:relative;
+    border-radius:20px;
+    overflow:hidden;
+    background:var(--sky);
+    min-height:0;
+    border:1px solid rgba(29,42,31,.06);
+  }
+  .photo .img{
+    position:absolute; inset:0;
+    background-size:cover;
+    background-position:center;
+    transform:scale(1.04);
+    transition:transform 8s ease;
+  }
+  .photo:hover .img{ transform:scale(1.09) }
+  .photo .overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(255,255,255,0) 35%, rgba(29,42,31,.55) 100%);
+  }
+  .photo .badge{
+    position:absolute;
+    top:18px; left:18px;
+    background:#fff;
+    color:var(--ink);
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:10px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    display:flex; align-items:center; gap:8px;
+    font-weight:500;
+  }
+  .photo .badge::before{
+    content:"";
+    width:6px;height:6px;border-radius:50%;
+    background:var(--coral);
+  }
+  .photo .caption{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:14px 20px;
+    color:#fff;
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:16px;
+  }
+  .photo .caption .title{
+    font-family:'Fraunces',serif;
+    font-size:18px;
+    font-weight:400;
+    line-height:1.2;
+    letter-spacing:-.01em;
+  }
+  .photo .caption .meta{
+    font-size:10px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.85);
+    text-align:right;
+    line-height:1.6;
+    flex-shrink:0;
+  }
+
+  /* contact card */
+  .contact{
+    background:linear-gradient(135deg, #fff7e3 0%, #ffe9d4 60%, #fcd5cb 100%);
+    border-radius:20px;
+    padding:18px 24px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    min-height:0;
+    border:1px solid rgba(29,42,31,.06);
+  }
+  .contact .squiggle{
+    position:absolute;
+    top:18px; right:20px;
+    width:60px; height:60px;
+    opacity:.5;
+  }
+  .contact .label{
+    font-size:11px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    display:flex; align-items:center; gap:10px;
+    position:relative;
+  }
+  .contact .label::before{
+    content:"";
+    width:18px; height:1px; background:var(--coral);
+  }
+  .contact h2{
+    font-family:'Fraunces',serif;
+    font-weight:400;
+    font-size:clamp(20px, 2.2vw, 26px);
+    line-height:1.18;
+    letter-spacing:-.015em;
+    margin:8px 0 0;
+    color:var(--ink);
+    max-width:18ch;
+  }
+  .contact h2 em{ font-style:italic; color:var(--coral); font-weight:400 }
+
+  .cta{
+    margin-top:12px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--ink);
+    color:#fff;
+    padding:10px 18px;
+    border-radius:999px;
+    font-size:12px;
+    letter-spacing:.04em;
+    text-decoration:none;
+    transition:transform .25s ease, background .25s ease;
+    border:none;
+    cursor:pointer;
+    font-weight:500;
+  }
+  .btn-primary:hover{ background:var(--coral); transform:translateY(-1px) }
+  .btn-primary svg{ transition:transform .25s ease }
+  .btn-primary:hover svg{ transform:translate(2px,-2px) }
+
+  .btn-ghost{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--ink);
+    text-decoration:none;
+    font-size:13px;
+    padding:12px 4px;
+    border-bottom:1px solid var(--ink);
+    transition:opacity .2s ease;
+  }
+  .btn-ghost:hover{ opacity:.6 }
+
+  .agpixel-tag{
+    display:flex; align-items:center; gap:10px;
+    margin-top:auto;
+    padding-top:10px;
+    border-top:1px solid rgba(29,42,31,.1);
+    font-size:10px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .agpixel-tag .logo-pill{
+    height:24px;
+    background:var(--ink);
+    border-radius:6px;
+    padding:0 9px;
+    display:inline-flex; align-items:center;
+  }
+  .agpixel-tag .logo-pill img{ height:14px; width:auto; display:block }
+
+  /* ==== FACTS ==== */
+  .facts{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:12px;
+  }
+  .fact{
+    padding:12px 16px;
+    background:var(--paper);
+    border-radius:14px;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    border:1px solid rgba(29,42,31,.06);
+    position:relative;
+    overflow:hidden;
+  }
+  .fact::after{
+    content:"";
+    position:absolute;
+    top:14px; right:14px;
+    width:10px; height:10px;
+    border-radius:50%;
+    opacity:.7;
+  }
+  .fact:nth-child(1)::after{ background:var(--sun) }
+  .fact:nth-child(2)::after{ background:var(--leaf) }
+  .fact:nth-child(3)::after{ background:var(--sky) }
+  .fact:nth-child(4)::after{ background:var(--coral) }
+
+  .fact .k{
+    font-size:10px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .fact .v{
+    font-family:'Fraunces',serif;
+    font-weight:400;
+    font-size:clamp(16px,1.7vw,21px);
+    line-height:1.05;
+    color:var(--ink);
+    letter-spacing:-.01em;
+  }
+  .fact .v small{
+    font-family:'Inter',sans-serif;
+    font-size:10px;
+    color:var(--ink-soft);
+    letter-spacing:.04em;
+    margin-left:4px;
+    font-weight:400;
+    display:block;
+    margin-top:2px;
+  }
+  @media (max-width:880px){ .facts{ grid-template-columns:repeat(2,1fr) } }
+  @media (max-width:480px){ .facts{ grid-template-columns:1fr } }
+
+  /* ==== FOOTER ==== */
+  footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:11px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  footer a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--rule) }
+  footer a:hover{ border-color:var(--coral) }
+
+  .arr{ width:14px; height:14px; }
+
+</style>
+</head>
+<body>
+  <div class="shell">
+
+    <!-- TOP -->
+    <div class="top">
+      <div>— um pedacinho do norte de Mato&nbsp;Grosso</div>
+      <div class="coords"><span class="live"><span class="dot"></span> Juara está no ar</span></div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <!-- LEFT -->
+      <div class="left">
+        <div class="sun-deco" aria-hidden="true"></div>
+
+        <!-- leafy SVG decoration -->
+        <svg class="leaf-deco" viewBox="0 0 200 200" aria-hidden="true">
+          <g fill="none" stroke="#5fa463" stroke-width="1.4" stroke-linecap="round">
+            <path d="M30 180 Q50 140, 90 130 Q130 120, 150 80"/>
+            <path d="M40 180 Q60 150, 100 145"/>
+          </g>
+          <g fill="#5fa463" opacity=".65">
+            <ellipse cx="60" cy="160" rx="14" ry="6" transform="rotate(-25 60 160)"/>
+            <ellipse cx="78" cy="148" rx="12" ry="5" transform="rotate(-20 78 148)"/>
+            <ellipse cx="100" cy="138" rx="14" ry="6" transform="rotate(-15 100 138)"/>
+            <ellipse cx="125" cy="120" rx="12" ry="5" transform="rotate(-30 125 120)"/>
+            <ellipse cx="142" cy="100" rx="14" ry="6" transform="rotate(-40 142 100)"/>
+          </g>
+          <g fill="#f8b94c" opacity=".85">
+            <circle cx="155" cy="72" r="5"/>
+            <circle cx="115" cy="100" r="4"/>
+          </g>
+        </svg>
+
+        <div>
+          <div class="eyebrow"><span class="line"></span> Capital do Vale do Arinos · Norte de MT</div>
+          <h1 class="display">
+            Um lugar<br/>
+            chamado <em>Juara.</em>
+            <span class="city">Mato Grosso · Brasil · 35 mil juarenses</span>
+          </h1>
+          <p class="lede">
+            Estes dois domínios pertencem a um juarense apaixonado pela cidade. <strong>Por enquanto</strong>, ainda não decidimos o que cada um vai virar — mas se você tem uma ideia, um projeto, ou quer um deles para o seu, vamos conversar. ✨
+          </p>
+        </div>
+
+        <div class="domains">
+          <div class="domain-row">
+            <span class="num">01</span>
+            <span class="url">portaljuara.com.br</span>
+            <span class="tag">disponível p/ projeto</span>
+          </div>
+          <div class="domain-row">
+            <span class="num">02</span>
+            <span class="url">juaramt.com.br</span>
+            <span class="tag">disponível p/ projeto</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="right">
+
+        <!-- PHOTO -->
+        <div class="photo">
+          <div class="img" style="background-image:url('assets/juara-mt.jpg')"></div>
+          <div class="overlay"></div>
+          <div class="badge">Juara · MT</div>
+          <div class="caption">
+            <div class="title">Norte de MT,<br/>orgulho juarense.</div>
+            <div class="meta">22.622<br/>km²<br/>de cidade</div>
+          </div>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="contact">
+          <svg class="squiggle" viewBox="0 0 60 60" aria-hidden="true">
+            <path d="M5 30 Q15 10, 25 30 T45 30 T65 30" fill="none" stroke="#ee7b5a" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <div class="label">Interessou? Vamos conversar</div>
+            <h2>Os domínios são meus — mas <em>tudo</em> é conversável.</h2>
+          </div>
+          <div class="cta">
+            <a class="btn-primary" href="https://agpixel.com.br" target="_blank" rel="noopener">
+              Falar pela AGPixel
+              <svg class="arr" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 11 L11 3 M5 3 H11 V9"/>
+              </svg>
+            </a>
+            <a class="btn-ghost" href="https://agpixel.com.br" target="_blank" rel="noopener">agpixel.com.br</a>
+          </div>
+          <div class="agpixel-tag">
+            <span class="logo-pill"><img src="assets/logo_pixel.svg" alt="AGPixel" /></span>
+            <span>Mantido por AGPixel · 2026</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FACTS -->
+    <section class="facts" aria-label="Fatos sobre Juara">
+      <div class="fact">
+        <span class="k">Fundação</span>
+        <span class="v">14 dez 1981<small>município</small></span>
+      </div>
+      <div class="fact">
+        <span class="k">Habitantes</span>
+        <span class="v">≈ 35 mil<small>juarenses</small></span>
+      </div>
+      <div class="fact">
+        <span class="k">Distância de Cuiabá</span>
+        <span class="v">730 km<small>norte de MT</small></span>
+      </div>
+      <div class="fact">
+        <span class="k">Apelido</span>
+        <span class="v">Capital<small>do Vale do Arinos</small></span>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>portaljuara.com.br &nbsp;·&nbsp; juaramt.com.br</div>
+      <div>© 2026 — feito com 🧡 em Juara/MT</div>
+    </footer>
+
+  </div>
+
+<script>
+  (function(){
+    var host = (location.hostname || '').replace(/^www\./,'').toLowerCase();
+    var rows = document.querySelectorAll('.domain-row');
+    rows.forEach(function(r){
+      var url = r.querySelector('.url').textContent.trim().toLowerCase();
+      if(host && url === host){
+        r.style.background = 'linear-gradient(90deg, rgba(238,123,90,.14), #fff)';
+        r.style.borderColor = 'rgba(238,123,90,.5)';
+        var tag = r.querySelector('.tag');
+        tag.textContent = 'você está aqui';
+        tag.style.color = '#ee7b5a';
+        tag.style.background = 'rgba(238,123,90,.14)';
+      }
+    });
+  })();
+</script>
+</body>
+</html>
