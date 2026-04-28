@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://juaramt.com.br/sitemap.xml
+Sitemap: https://portaljuara.com.br/sitemap.xml
